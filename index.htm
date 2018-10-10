@@ -1,19 +1,53 @@
 
-        
-        body, html {
-    height: 100%;
-}
+<body>
+    <img src="https://makenaihito.github.io/freevt/black.jpg" id="bg-img">
+</body>
 
-.bg { 
-    /* The image used */
-    background-image: url("https://makenaihito.github.io/freevt/black.jpg");
+ <style>
+        #bg-img {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            z-index: -99;
+        }
+    </style>
 
-    /* Full height */
-    height: 100%; 
+<script>
+    $(function () {
 
-    /* Center and scale the image nicely */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
+        resize_tab();
+    });
 
+    $(window).resize(function () {
+        resize_tab();
+    }).resize();
+
+    function resize_tab() {
+
+        var viewportWidth = $(window).innerWidth();
+        var viewportHeight = $(window).innerHeight();
+
+        var width = $('#bg-img').width();
+        var height = $('#bg-img').height();
+
+
+        if ((viewportWidth / viewportHeight) > (width / height)) {
+
+            $('#bg-img').css({
+                'width': '100%',
+                'height': 'auto',
+                'margin-left': 0 - width / 2,
+                'margin-top': 0 - height / 2
+            });
+
+
+        } else {
+            $('#bg-img').css({
+                'width': 'auto',
+                'height': '100%',
+                'margin-left': 0 - width / 2,
+                'margin-top': 0 - height / 2
+            });
+        }
+    }
+</script>
